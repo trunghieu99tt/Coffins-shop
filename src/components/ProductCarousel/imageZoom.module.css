@@ -1,0 +1,69 @@
+.root {
+    margin: 0 auto;
+}
+
+.zoomContainer {
+    width: 400px;
+    height: 400px;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 10;
+    border: 1px solid #d4d4d4;
+    box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.25);
+}
+
+.root img,
+.root > div {
+    cursor: crosshair;
+}
+
+.mainImage {
+    width: 450px;
+}
+
+.mainImage img {
+    width: 100%;
+}
+
+@media print {
+    .root {
+        width: 250px !important;
+        height: 250px !important;
+    }
+    .root > div {
+        height: 250px !important;
+    }
+}
+
+@media (min-width: 1025px) and (max-width: 1800px) {
+    .zoomContainer {
+        width: 350px;
+        height: 300px;
+        right: 25px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .zoomContainer {
+        display: none;
+    }
+
+    .root {
+        margin: 0 auto;
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .mainImage {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .root {
+        max-width: 95vw;
+    }
+}

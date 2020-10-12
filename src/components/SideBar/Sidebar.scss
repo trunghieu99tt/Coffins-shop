@@ -1,0 +1,28 @@
+.sidebar {
+    width: 15%;
+    flex-shrink: 0;
+
+    &-header {
+        padding: 1rem;
+        background: #000;
+        color: #fff;
+        font-size: 1.5rem;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+
+    &-item {
+        &__name {
+            margin: 1rem 0;
+            color: #000;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .sidebar {
+        display: none;
+    }
+}

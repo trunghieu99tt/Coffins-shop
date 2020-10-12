@@ -1,0 +1,9 @@
+.home {
+    &-main {
+        display: flex;
+
+        .productLists {
+            flex: 1;
+        }
+    }
+}

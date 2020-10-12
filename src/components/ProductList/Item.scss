@@ -1,0 +1,58 @@
+.item {
+    border: 1px solid #e0e0e0;
+
+    &__details {
+    }
+
+    &__imageContainer {
+        overflow: hidden;
+    }
+
+    &__image {
+        transition: all 0.3s;
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+
+    &__link {
+        &:hover {
+            text-decoration: none;
+        }
+    }
+
+    &__name {
+        text-align: center;
+        color: #000;
+        text-decoration: none;
+        font-size: 1.5rem;
+    }
+
+    &__price {
+        display: flex;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: 500;
+
+        &--latestPrice {
+            color: red;
+        }
+
+        &--initialPrice {
+            color: gray;
+            text-decoration: line-through;
+        }
+    }
+
+    &__contact {
+        text-align: center;
+        font-size: 1.5rem;
+        color: red;
+        font-weight: 500;
+    }
+}
+
+.device {
+    margin: 0 5px;
+}
