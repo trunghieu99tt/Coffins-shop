@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
+
 import Item from "./Item";
+import ItemSkeleton from "./ItemSkeleton";
 
 import "./ProductList.scss";
 
-const ProductList = ({ data, name, isSlide }) => {
-    let innerContent = null;
-
+const ProductList = ({ items, name, isSlide, isLoading }) => {
     const settings = {
         dots: false,
         infinite: true,
@@ -42,31 +42,16 @@ const ProductList = ({ data, name, isSlide }) => {
         ],
     };
 
+    const itemsDOM =
+        (isLoading && [...Array(12)].map(() => <ItemSkeleton />)) ||
+        (items?.length > 0 &&
+            items
+                .map((item) => <Item {...item} key={item.id} />)
+                .slice(0, Math.min(12, items.length)));
+    let innerContent = itemsDOM;
+
     if (isSlide) {
-        innerContent = (
-            <Slider {...settings}>
-                {[...Array(8)].map(() => {
-                    const isSale = Math.random() >= 0.5;
-                    const isContactForPrice = Math.random() <= 0.5;
-
-                    return (
-                        <Item
-                            isSale={isSale}
-                            isContactForPrice={isContactForPrice}
-                        />
-                    );
-                })}
-            </Slider>
-        );
-    } else {
-        innerContent = [...Array(8)].map(() => {
-            const isSale = Math.random() >= 0.5;
-            const isContactForPrice = Math.random() <= 0.5;
-
-            return (
-                <Item isSale={isSale} isContactForPrice={isContactForPrice} />
-            );
-        });
+        innerContent = <Slider {...settings}>{itemsDOM}</Slider>;
     }
 
     return (

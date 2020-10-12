@@ -1,33 +1,33 @@
 import React from "react";
+import { useProductsContext } from "../../context/products.context";
 
-import ProductImage from "../../static/images/b1.jpg";
+import Item from "../ProductList/Item";
+import SideBarSkeleton from "./SideBarSkeleton";
 
 import "./Sidebar.scss";
 
 const SideBar = () => {
+    const [{ categories }] = useProductsContext();
+
+    if (!categories) {
+        return <SideBarSkeleton />;
+    }
+
+    const selectedCategory =
+        categories?.length > 0 &&
+        categories.find((category) => category.products.length >= 5);
+    const products =
+        selectedCategory?.products?.length > 0 && selectedCategory.products;
+    const categoryName = selectedCategory?.name || "";
+
     return (
         <section className="sidebar">
-            <header className="sidebar-header">QUAN GỖ RỔI</header>
+            <header className="sidebar-header">{categoryName}</header>
             <div className="sidebar-main">
-                {[...Array(10)].map((_, idx) => {
-                    return (
-                        <article className="sidebar-item">
-                            <figure className="sidebar-item__imageContainer">
-                                <img
-                                    src={ProductImage}
-                                    alt="product"
-                                    className="w-100 sidebar-item__image"
-                                />
-
-                                <figcaption className="sidebar-item__details">
-                                    <p className="sidebar-item__name">
-                                        QUAN GỖ RỔI
-                                    </p>
-                                </figcaption>
-                            </figure>
-                        </article>
-                    );
-                })}
+                {products?.length > 0 &&
+                    products
+                        .slice(0, Math.min(10, products.length))
+                        .map((product) => <Item {...product} />)}
             </div>
         </section>
     );

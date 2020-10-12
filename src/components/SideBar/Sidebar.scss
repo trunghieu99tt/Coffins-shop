@@ -11,6 +11,16 @@
         margin-bottom: 10px;
     }
 
+    &-main {
+        .item {
+            margin-bottom: 2rem;
+
+            &:first-child {
+                margin-top: 2rem;
+            }
+        }
+    }
+
     &-item {
         &__name {
             margin: 1rem 0;

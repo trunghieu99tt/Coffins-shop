@@ -1,20 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Banner from "../../components/Banner/Banner";
 import ProductList from "../../components/ProductList/ProductList";
 import SideBar from "../../components/SideBar/SideBar";
+import { useProductsContext } from "../../context/products.context";
 
 import "./Home.scss";
 
 const Home = () => {
+    const [{ categories }] = useProductsContext();
+
+    const [featureCategories, setFeatureCategories] = useState([]);
+
+    useEffect(() => {
+        const filteredCategories =
+            categories?.length > 0 &&
+            categories
+                .filter((category) => category.products.length >= 4)
+                .sort((a, b) => b.products.length - a.products.length);
+        setFeatureCategories(filteredCategories);
+    }, [categories]);
+
+    if (!categories)
+        return (
+            <React.Fragment>
+                <Banner />
+                <div className="container-fluid home-main">
+                    <SideBar></SideBar>
+                    <div className="productLists">
+                        <ProductList isLoading={true} />
+                    </div>
+                </div>
+            </React.Fragment>
+        );
+
     return (
         <React.Fragment>
             <Banner />
             <div className="container-fluid home-main">
                 <SideBar></SideBar>
                 <div className="productLists">
-                    <ProductList />
-                    <ProductList />
-                    <ProductList />
+                    {featureCategories?.length > 0 &&
+                        featureCategories
+                            .slice(0, Math.min(3, featureCategories.length))
+                            .map((featureCategory) => {
+                                const { products, name } = featureCategory;
+                                return (
+                                    <ProductList name={name} items={products} />
+                                );
+                            })}
                 </div>
             </div>
         </React.Fragment>

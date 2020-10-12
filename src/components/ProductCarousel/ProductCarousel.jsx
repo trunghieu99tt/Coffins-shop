@@ -16,6 +16,7 @@ const zoomProps = {
 };
 
 const ProductImageCarousel = (props) => {
+    const { images } = props;
     const [mouseX, setMouseX] = useState(null);
     const [mouseY, setMouseY] = useState(null);
     const [zoom, setZoom] = useState(false);
@@ -39,11 +40,11 @@ const ProductImageCarousel = (props) => {
 
     const galleryImages = [
         {
-            original: ProductImage,
-            thumbnail: ProductImage,
+            original: images,
+            thumbnail: images,
             renderItem: () => (
                 <ImageZoom
-                    img={ProductImage}
+                    img={images}
                     {...zoomProps}
                     setMouseX={setMouseX}
                     setMouseY={setMouseY}

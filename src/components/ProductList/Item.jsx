@@ -2,23 +2,30 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import ProductImage from "../../static/images/b1.jpg";
+import { formatMoney } from "../../utils/helper";
 
 import "./Item.scss";
 
-const Item = ({ isContactForPrice, isSale }) => {
+const Item = (props) => {
+    const {
+        isContactForPrice,
+        isSale,
+        name,
+        image,
+        price,
+        minimalPrice,
+        id,
+    } = props;
+
     return (
         <article className="item">
             <figure className="item__imageContainer">
-                <img
-                    src={ProductImage}
-                    alt="product"
-                    className="w-100 item__image"
-                />
+                <img src={image} alt={name} className="w-100 item__image" />
             </figure>
 
             <figcaption className="item__details">
-                <Link to="/detail" className="item__link">
-                    <p className="item__name">QUAN GỖ VÀNG TÂM – 216</p>
+                <Link to={`/san-pham/${id}`} className="item__link">
+                    <p className="item__name">{name}</p>
                 </Link>
 
                 {(isContactForPrice && (
@@ -28,16 +35,16 @@ const Item = ({ isContactForPrice, isSale }) => {
                         {(isSale && (
                             <React.Fragment>
                                 <p className="item__price--latestPrice">
-                                    42.000.000VND
+                                    {formatMoney(minimalPrice)}VND
                                 </p>
                                 <span className="device">|</span>
                                 <p className="item__price--initialPrice">
-                                    39.000.000VND
+                                    {formatMoney(price)}VND
                                 </p>
                             </React.Fragment>
                         )) || (
                             <p className="item__price--latestPrice">
-                                42.000.000VND
+                                {formatMoney(price)}VND
                             </p>
                         )}
                     </div>
