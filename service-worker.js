@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/Coffins-shop/precache-manifest.90d597ce7cd988224cd1acead757535c.js"
+  "/Coffins-shop/precache-manifest.f8ab1b17410ffea0e9dd1b0bad288fc8.js"
 );
 
 self.addEventListener('message', (event) => {

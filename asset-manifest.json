@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/Coffins-shop/static/css/main.49d87be9.chunk.css",
-    "main.js": "/Coffins-shop/static/js/main.69ec6db5.chunk.js",
-    "main.js.map": "/Coffins-shop/static/js/main.69ec6db5.chunk.js.map",
+    "main.css": "/Coffins-shop/static/css/main.d18e2f49.chunk.css",
+    "main.js": "/Coffins-shop/static/js/main.7ef8ee3d.chunk.js",
+    "main.js.map": "/Coffins-shop/static/js/main.7ef8ee3d.chunk.js.map",
     "runtime-main.js": "/Coffins-shop/static/js/runtime-main.584df0d3.js",
     "runtime-main.js.map": "/Coffins-shop/static/js/runtime-main.584df0d3.js.map",
-    "static/css/2.0e680409.chunk.css": "/Coffins-shop/static/css/2.0e680409.chunk.css",
-    "static/js/2.27be2018.chunk.js": "/Coffins-shop/static/js/2.27be2018.chunk.js",
-    "static/js/2.27be2018.chunk.js.map": "/Coffins-shop/static/js/2.27be2018.chunk.js.map",
+    "static/css/2.87661439.chunk.css": "/Coffins-shop/static/css/2.87661439.chunk.css",
+    "static/js/2.1e89b257.chunk.js": "/Coffins-shop/static/js/2.1e89b257.chunk.js",
+    "static/js/2.1e89b257.chunk.js.map": "/Coffins-shop/static/js/2.1e89b257.chunk.js.map",
     "index.html": "/Coffins-shop/index.html",
-    "precache-manifest.90d597ce7cd988224cd1acead757535c.js": "/Coffins-shop/precache-manifest.90d597ce7cd988224cd1acead757535c.js",
+    "precache-manifest.f8ab1b17410ffea0e9dd1b0bad288fc8.js": "/Coffins-shop/precache-manifest.f8ab1b17410ffea0e9dd1b0bad288fc8.js",
     "service-worker.js": "/Coffins-shop/service-worker.js",
-    "static/css/2.0e680409.chunk.css.map": "/Coffins-shop/static/css/2.0e680409.chunk.css.map",
-    "static/css/main.49d87be9.chunk.css.map": "/Coffins-shop/static/css/main.49d87be9.chunk.css.map",
-    "static/js/2.27be2018.chunk.js.LICENSE.txt": "/Coffins-shop/static/js/2.27be2018.chunk.js.LICENSE.txt",
+    "static/css/2.87661439.chunk.css.map": "/Coffins-shop/static/css/2.87661439.chunk.css.map",
+    "static/css/main.d18e2f49.chunk.css.map": "/Coffins-shop/static/css/main.d18e2f49.chunk.css.map",
+    "static/js/2.1e89b257.chunk.js.LICENSE.txt": "/Coffins-shop/static/js/2.1e89b257.chunk.js.LICENSE.txt",
     "static/media/b1.jpg": "/Coffins-shop/static/media/b1.50e69ccd.jpg",
     "static/media/b2.jpg": "/Coffins-shop/static/media/b2.35341f23.jpg",
     "static/media/slick-theme.css": "/Coffins-shop/static/media/slick.f97e3bbf.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.584df0d3.js",
-    "static/css/2.0e680409.chunk.css",
-    "static/js/2.27be2018.chunk.js",
-    "static/css/main.49d87be9.chunk.css",
-    "static/js/main.69ec6db5.chunk.js"
+    "static/css/2.87661439.chunk.css",
+    "static/js/2.1e89b257.chunk.js",
+    "static/css/main.d18e2f49.chunk.css",
+    "static/js/main.7ef8ee3d.chunk.js"
   ]
 }
