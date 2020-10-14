@@ -1,13 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Slider from "react-slick";
+import { Pagination } from "antd";
+import { useProductList } from "./useProductList";
 
 import Item from "./Item";
 import ItemSkeleton from "./ItemSkeleton";
 
 import "./ProductList.scss";
 
-const ProductList = ({ items, name, isSlide, isLoading }) => {
+const ProductList = ({ items, name, isSlide, isLoading, isFull }) => {
+    const { products, currentPage, pageSize, handleOnChange } = useProductList({
+        items,
+    });
+
     const settings = {
         dots: false,
         infinite: true,
@@ -42,17 +48,21 @@ const ProductList = ({ items, name, isSlide, isLoading }) => {
         ],
     };
 
+    const upperBound = (!isFull && 4) || 10000;
+
     const itemsDOM =
-        (isLoading && [...Array(12)].map(() => <ItemSkeleton />)) ||
-        (items?.length > 0 &&
-            items
-                .map((item) => <Item {...item} key={item.id} />)
-                .slice(0, Math.min(12, items.length)));
+        (isLoading && [...Array(pageSize)].map(() => <ItemSkeleton />)) ||
+        (products?.length > 0 &&
+            products
+                .slice(0, Math.min(products.length, upperBound))
+                .map((product) => <Item {...product} key={product.id} />));
+
     let innerContent = itemsDOM;
 
-    if (isSlide) {
-        innerContent = <Slider {...settings}>{itemsDOM}</Slider>;
-    }
+    // if (isSlide) {
+    //     console.log("Go here");
+    //     innerContent = <Slider {...settings}>{itemsDOM}</Slider>;
+    // }
 
     return (
         <section className="productList">
@@ -64,6 +74,19 @@ const ProductList = ({ items, name, isSlide, isLoading }) => {
                 </Link>
             </header>
             <div className="productList-main">{innerContent}</div>
+
+            {isFull && items.length > pageSize && (
+                <div className="pagination">
+                    <Pagination
+                        key={items?.length || 0}
+                        defaultCurrent={1}
+                        current={currentPage}
+                        total={items?.length || 0}
+                        onChange={handleOnChange}
+                        pageSize={pageSize}
+                    />
+                </div>
+            )}
         </section>
     );
 };

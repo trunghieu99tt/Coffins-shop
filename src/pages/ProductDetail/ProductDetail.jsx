@@ -26,6 +26,10 @@ const ProductDetail = () => {
         scrollToTop();
     }, []);
 
+    useEffect(() => {
+        scrollToTop();
+    }, [id]);
+
     const handleChange = (e) => {
         const { value } = e.target;
         setQuantity(~~value);

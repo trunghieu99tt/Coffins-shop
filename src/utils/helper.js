@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-expressions */
 import axios from "axios";
-import { isArray } from "jquery";
 import { API_URL } from "../variables";
 
 const resetAnimation = (el) => {
@@ -247,9 +246,6 @@ const splitImageData = (images) => images.split(",");
 
 const parseData = (data) => (data && data[Object.keys(data)]) || [];
 
-const parseData2 = (data) =>
-    (!isArray(data) && data && Object.values(data)) || data;
-
 const uploadData = async (name, data) => {
     return await axios.post(`${API_URL}/${name}.json`, data);
 };
@@ -288,6 +284,5 @@ export {
     parseData,
     uploadData,
     getRandomNumber,
-    parseData2,
     formatMoney,
 };

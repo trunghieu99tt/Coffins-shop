@@ -8,8 +8,9 @@ export const links = [
         link: "/gioi-thieu",
     },
     {
-        name: "Sản phẩm",
-        link: "/products",
+        name: "Chuyên Mục",
+        link: "/",
+        flag: 1,
     },
     {
         name: "Liên hệ",

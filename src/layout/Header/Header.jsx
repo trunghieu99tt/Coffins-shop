@@ -79,7 +79,7 @@ const Header = () => {
                 setIsHome(false);
             }
         }
-    }, [history]);
+    }, [location]);
 
     useEffect(() => {
         if (isDesktop && width <= 1024) {
@@ -105,7 +105,9 @@ const Header = () => {
                         <figure className="logo-container">
                             <img src={Logo} alt="logo" className="logo" />
                         </figure>
-                        {(isDesktop && <NavDesktop />) || <NavMobile />}
+                        {(isDesktop && <NavDesktop isActive={isActive} />) || (
+                            <NavMobile />
+                        )}
                     </div>
                 </div>
             </header>

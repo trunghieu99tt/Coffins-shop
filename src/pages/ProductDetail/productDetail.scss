@@ -1,6 +1,11 @@
 .productDetail {
     margin-left: 2rem;
-    flex: 1;
+    width: 85%;
+    overflow-x: hidden;
+
+    @media (max-width: 1024px) {
+        width: 100% ;
+    }
 
     &-main {
         display: flex;

@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
-import faker from "faker";
+// import faker from "faker";
 
-import { Home, ProductDetail, Introduction } from "./pages";
+import { Home, ProductDetail, Introduction, Category, NotFound } from "./pages";
 
 import BaseView from "./layout/View/BaseView";
 
+import "antd/dist/antd.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -54,9 +55,15 @@ const App = () => {
                 ></Route>
                 <Route
                     exact
+                    path="/chuyen-muc/:name"
+                    component={Category}
+                ></Route>
+                <Route
+                    exact
                     path="/gioi-thieu"
                     component={Introduction}
                 ></Route>
+                <Route component={NotFound}></Route>
             </Switch>
         </React.Fragment>
     );
