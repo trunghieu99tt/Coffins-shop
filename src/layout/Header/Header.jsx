@@ -54,6 +54,8 @@ const Header = () => {
         }
     };
 
+    const handleBackHome = () => history.push("/");
+
     useEffect(() => {
         handleActiveLink();
         if (location.pathname === "/") {
@@ -102,7 +104,10 @@ const Header = () => {
             >
                 <div className="container">
                     <div className="row justify-content-between align-items-center">
-                        <figure className="logo-container">
+                        <figure
+                            className="logo-container"
+                            onClick={handleBackHome}
+                        >
                             <img src={Logo} alt="logo" className="logo" />
                         </figure>
                         {(isDesktop && <NavDesktop isActive={isActive} />) || (

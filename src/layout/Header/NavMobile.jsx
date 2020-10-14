@@ -1,21 +1,35 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { useProductsContext } from "../../context/products.context";
 
 import MiniCart from "../../components/MiniCart/MiniCart";
-import { Menu, X } from "react-feather";
+import Mask from "../../components/Mask/Mask";
+
+import { ChevronUp, ChevronDown, Menu, X } from "react-feather";
 
 import { links } from "./header.data";
 
 const NavMobile = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [{ categories }] = useProductsContext();
+    const location = useLocation();
+
+    useEffect(() => {
+        setIsOpen(false);
+    }, [location]);
 
     const handleOpenMenu = () => setIsOpen(true);
 
     const handleCloseMenu = () => setIsOpen(false);
 
+    const toggleExpand = () => setIsExpanded((value) => !value);
+
+    const icon = (isExpanded && <ChevronUp />) || <ChevronDown />;
+
     return (
         <React.Fragment>
-            {isOpen && <div className="navMobile-mask"></div>}
+            {isOpen && <Mask handleOnClick={handleCloseMenu} />}
             {!isOpen && (
                 <button className="menu--open" onClick={handleOpenMenu}>
                     <Menu />
@@ -30,13 +44,35 @@ const NavMobile = () => {
                 <nav className="header-nav">
                     <ul className="d-flex header-navInner">
                         {links.map((item) => {
-                            const { name, link } = item;
+                            const { name, link, flag } = item;
                             return (
                                 <li
                                     className={`header-linkItem`}
                                     link-name={name}
                                 >
-                                    <Link to={link}>{name}</Link>
+                                    {(flag && (
+                                        <button onClick={toggleExpand}>
+                                            {name} {flag && <div>{icon}</div>}
+                                        </button>
+                                    )) || <Link to={link}>{name}</Link>}
+
+                                    {isExpanded && flag && (
+                                        <ul>
+                                            {categories?.length > 0 &&
+                                                categories.map((category) => {
+                                                    const { name } = category;
+                                                    return (
+                                                        <li className="subMenuItem">
+                                                            <Link
+                                                                to={`/chuyen-muc/${name}`}
+                                                            >
+                                                                <p>{name}</p>
+                                                            </Link>
+                                                        </li>
+                                                    );
+                                                })}
+                                        </ul>
+                                    )}
                                 </li>
                             );
                         })}
