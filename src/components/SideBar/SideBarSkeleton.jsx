@@ -8,8 +8,8 @@ const SideBarSkeleton = () => {
         <section className="sidebar">
             <Skeleton height="50px" />
             <div className="sidebar-main">
-                {[...Array(10)].map(() => (
-                    <ItemSkeleton />
+                {[...Array(10)].map((_, idx) => (
+                    <ItemSkeleton key={`sidebarItemSkeleton-${idx}`} />
                 ))}
             </div>
         </section>

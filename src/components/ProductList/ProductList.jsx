@@ -51,7 +51,10 @@ const ProductList = ({ items, name, isSlide, isLoading, isFull }) => {
     const upperBound = (!isFull && 4) || 10000;
 
     const itemsDOM =
-        (isLoading && [...Array(pageSize)].map(() => <ItemSkeleton />)) ||
+        (isLoading &&
+            [...Array(pageSize)].map((_, idx) => (
+                <ItemSkeleton key={`product-list-skeleton-${idx}`} />
+            ))) ||
         (products?.length > 0 &&
             products
                 .slice(0, Math.min(products.length, upperBound))

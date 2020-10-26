@@ -6,6 +6,7 @@ import MiniCart from "../../components/MiniCart/MiniCart";
 import { useProductsContext } from "../../context/products.context";
 
 import { links } from "./header.data";
+import { encodeStr } from "../../utils/helper";
 
 const NavDesktop = ({ isActive }) => {
     const [{ categories }] = useProductsContext();
@@ -24,7 +25,7 @@ const NavDesktop = ({ isActive }) => {
         <React.Fragment>
             <nav className="header-nav">
                 <ul className="d-flex header-navInner">
-                    {links.map((item) => {
+                    {links.map((item, id) => {
                         const { name, link, flag } = item;
                         return (
                             <li
@@ -32,6 +33,7 @@ const NavDesktop = ({ isActive }) => {
                                     (isActive === link && "active") || ""
                                 }`}
                                 link-name={name}
+                                key={`categoryParent-${id}`}
                                 id="categoryLink"
                             >
                                 <Link to={link}>{name}</Link>
@@ -39,12 +41,17 @@ const NavDesktop = ({ isActive }) => {
                                 {flag && (
                                     <ul className="subMenu">
                                         {categories?.length > 0 &&
-                                            categories.map((category) => {
+                                            categories.map((category, idx) => {
                                                 const { name } = category;
                                                 return (
-                                                    <li className="subMenuItem">
+                                                    <li
+                                                        className="subMenuItem"
+                                                        key={`category-${idx}`}
+                                                    >
                                                         <Link
-                                                            to={`/chuyen-muc/${name}`}
+                                                            to={`/chuyen-muc/${encodeStr(
+                                                                name
+                                                            )}`}
                                                         >
                                                             <p>{name}</p>
                                                         </Link>

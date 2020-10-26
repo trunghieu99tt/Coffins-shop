@@ -4,6 +4,7 @@ import actions from "./actions";
 const INITIAL_STATE = {
     products: null,
     categories: null,
+    categoriesInfo: null,
 };
 
 const reducerMap = {
@@ -11,6 +12,12 @@ const reducerMap = {
         return {
             ...state,
             products: payload,
+        };
+    },
+    [actions.fetchCategoriesSuccess]: (state, { payload }) => {
+        return {
+            ...state,
+            categoriesInfo: payload,
         };
     },
     [actions.setCategories]: (state, { payload }) => {

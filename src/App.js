@@ -14,40 +14,31 @@ import "./static/css/main.min.css";
 import "react-image-gallery/styles/scss/image-gallery.scss";
 import "./App.css";
 // import { uploadData } from "./utils/helper";
-import { useProductsContext } from "./context/products.context";
+import Admin from "./pages/Admin/Admin";
+import { Loader } from "react-feather";
+import AdminProduct from "./pages/Admin/AdminProduct";
+import AdminCategory from "./pages/Admin/AdminCategory";
+import { useApp } from "./talons/useApp";
 
 const App = () => {
-    const [
-        { products },
-        { fetchProducts, setCategories },
-    ] = useProductsContext();
-
-    useEffect(() => {
-        if (!products) fetchProducts();
-    }, []);
-
-    useEffect(() => {
-        if (products) {
-            const productCategories = [
-                ...new Set(products.map((e) => e.category)),
-            ];
-            const categories = productCategories.map((category) => {
-                const productsOfCategory = products.filter(
-                    (product) => product.category === category
-                );
-                return {
-                    name: category,
-                    products: productsOfCategory,
-                };
-            });
-            setCategories(categories);
-        }
-    }, [products]);
+    const { loading } = useApp();
+    // if (loading) return <Loader />;
 
     return (
         <React.Fragment>
             <Switch>
                 <Route exact path="/" component={Home}></Route>
+                <Route exact path="/quan-tri" component={Admin}></Route>
+                <Route
+                    exact
+                    path="/quan-tri/san-pham/:id"
+                    component={AdminProduct}
+                ></Route>
+                <Route
+                    exact
+                    path="/quan-tri/chuyen-muc/:name"
+                    component={AdminCategory}
+                ></Route>
                 <Route
                     exact
                     path="/san-pham/:id"
@@ -70,50 +61,3 @@ const App = () => {
 };
 
 export default BaseView(App);
-
-// createMockData();
-
-// const fakeData = [...Array(100)].map(() => {
-//     const productPrice = parseInt(
-//         `${Math.round(faker.commerce.price()) * 1000000}`
-//     );
-//     let minimalPrice = productPrice;
-//     const isSale = Math.random() >= 0.5;
-//     const isContactForPrice = Math.random() < 0.5;
-//     if (isSale) {
-//         do {
-//             minimalPrice = Math.round(Math.random() * productPrice);
-//         } while (minimalPrice >= productPrice);
-//     }
-
-//     return {
-//         name: faker.commerce.productName(),
-//         material: faker.commerce.productMaterial(),
-//         price: productPrice,
-//         minimalPrice,
-//         description: faker.commerce.productDescription(),
-//         id: faker.random.uuid(),
-//         image: `${faker.image.image()}?random=${Date.now()}`,
-//         category: faker.commerce.department(),
-//         isSale,
-//         isContactForPrice,
-//     };
-// });
-
-// const categories = [
-//     ...new Set(
-//         fakeData.map((e) => ({
-//             name: e.category,
-//         }))
-//     ),
-// ];
-
-// const createMockData = async () => {
-//     fakeData.forEach(async (item) => {
-//         await uploadData("products", item);
-//     });
-//     categories.forEach(async (category) => {
-//         console.log("category", category);
-//         await uploadData("categories", category);
-//     });
-// };

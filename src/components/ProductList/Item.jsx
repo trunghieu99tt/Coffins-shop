@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import ImageSkeleton from "./ImageSkeleton";
-
 import { formatMoney } from "../../utils/helper";
 
 import "./Item.scss";
+import CustomImage from "../CustomImage/CustomImage";
 
 const Item = (props) => {
     const {
@@ -18,24 +17,9 @@ const Item = (props) => {
         id,
     } = props;
 
-    const [loaded, setLoaded] = useState(false);
-
-    const handleLoaded = () => setLoaded(true);
-
     return (
         <article className="item">
-            <figure className="item__imageContainer">
-                <img
-                    src={image}
-                    alt={name}
-                    className="w-100 item__image"
-                    onLoad={handleLoaded}
-                    style={{
-                        display: `${(loaded && "block") || "none"}`,
-                    }}
-                />
-                {!loaded && <ImageSkeleton />}
-            </figure>
+            <CustomImage src={image} alt={name} height={200} />
 
             <figcaption className="item__details">
                 <Link to={`/san-pham/${id}`} className="item__link">

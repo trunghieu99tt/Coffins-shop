@@ -43,10 +43,11 @@ const NavMobile = () => {
                 </button>
                 <nav className="header-nav">
                     <ul className="d-flex header-navInner">
-                        {links.map((item) => {
+                        {links.map((item, idx) => {
                             const { name, link, flag } = item;
                             return (
                                 <li
+                                    key={`menu-mobile-${idx}`}
                                     className={`header-linkItem`}
                                     link-name={name}
                                 >
@@ -60,9 +61,15 @@ const NavMobile = () => {
                                         <ul>
                                             {categories?.length > 0 &&
                                                 categories.map((category) => {
-                                                    const { name } = category;
+                                                    const {
+                                                        name,
+                                                        dbID,
+                                                    } = category;
                                                     return (
-                                                        <li className="subMenuItem">
+                                                        <li
+                                                            className="subMenuItem"
+                                                            key={`menu-category-${dbID}`}
+                                                        >
                                                             <Link
                                                                 to={`/chuyen-muc/${name}`}
                                                             >

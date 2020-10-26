@@ -15,7 +15,7 @@ const SideBar = () => {
 
     const selectedCategory =
         categories?.length > 0 &&
-        categories.find((category) => category.products.length >= 5);
+        categories.find((category) => category.products.length > 0);
     const products =
         selectedCategory?.products?.length > 0 && selectedCategory.products;
     const categoryName = selectedCategory?.name || "";
@@ -27,7 +27,9 @@ const SideBar = () => {
                 {products?.length > 0 &&
                     products
                         .slice(0, Math.min(10, products.length))
-                        .map((product) => <Item {...product} />)}
+                        .map((product, id) => (
+                            <Item key={`sidebarItem-${id}`} {...product} />
+                        ))}
             </div>
         </section>
     );

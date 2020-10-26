@@ -1,5 +1,5 @@
 import { call, put, takeLatest } from "redux-saga/effects";
-import { queryProducts } from "./products.queries";
+import { queryCategories, queryProducts } from "./products.queries";
 
 import actions from "./actions";
 
@@ -18,4 +18,20 @@ function* fetchProducts() {
 
 export function* getAllProducts() {
     yield takeLatest(actions.fetchProducts, fetchProducts);
+}
+
+function* fetchCategories() {
+    try {
+        const response = yield call(queryCategories);
+        if (response) {
+            yield put({
+                type: actions.fetchCategoriesSuccess,
+                payload: response || [],
+            });
+        }
+    } catch (error) {}
+}
+
+export function* getAllCategories() {
+    yield takeLatest(actions.fetchCategories, fetchCategories);
 }

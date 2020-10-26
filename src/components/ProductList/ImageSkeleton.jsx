@@ -4,10 +4,13 @@ import Skeleton from "react-loading-skeleton";
 
 import "./Item.scss";
 
-const ImageSkeleton = (props) => {
+const ImageSkeleton = ({ height }) => {
     return (
         <figure className="item__imageContainer">
-            <Skeleton height="200px" className="w-100 item__image" />
+            <Skeleton
+                height={`${height || 350}px`}
+                className="w-100 item__image"
+            />
         </figure>
     );
 };

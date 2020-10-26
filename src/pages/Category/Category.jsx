@@ -3,6 +3,7 @@ import { useParams } from "react-router";
 import ProductList from "../../components/ProductList/ProductList";
 import { useProductsContext } from "../../context/products.context";
 import scrollToTop from "../../hooks/scrollToTop";
+import { encodeStr } from "../../utils/helper";
 
 const Category = () => {
     const [{ categories }] = useProductsContext();
@@ -18,7 +19,8 @@ const Category = () => {
 
     if (!categories) return null;
 
-    const category = categories && categories.find((e) => e.name === name);
+    const category =
+        categories && categories.find((e) => encodeStr(e.name) === name);
 
     const products = category?.products;
 

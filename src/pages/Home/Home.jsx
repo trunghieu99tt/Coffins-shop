@@ -15,7 +15,7 @@ const Home = () => {
         const filteredCategories =
             categories?.length > 0 &&
             categories
-                .filter((category) => category.products.length >= 4)
+                .filter((category) => category.products.length > 1)
                 .sort((a, b) => b.products.length - a.products.length);
         setFeatureCategories(filteredCategories);
     }, [categories]);
@@ -42,10 +42,14 @@ const Home = () => {
                     {featureCategories?.length > 0 &&
                         featureCategories
                             .slice(0, Math.min(3, featureCategories.length))
-                            .map((featureCategory) => {
+                            .map((featureCategory, idx) => {
                                 const { products, name } = featureCategory;
                                 return (
-                                    <ProductList name={name} items={products} />
+                                    <ProductList
+                                        key={`product-list-home-${idx}`}
+                                        name={name}
+                                        items={products}
+                                    />
                                 );
                             })}
                 </div>

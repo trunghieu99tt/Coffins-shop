@@ -66,8 +66,8 @@ const Footer = () => {
 
                         <iframe
                             src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d14895.343907210274!2d105.596856!3d21.039248!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31345756edd6cff9%3A0xa056c6415a6f9972!2zQ2jDoG5nIFPGoW4sIFRo4bqhY2ggVGjhuqV0LCBIYW5vaSwgVmlldG5hbQ!5e0!3m2!1sen!2sus!4v1602428516750!5m2!1sen!2sus"
-                            frameborder="0"
-                            ariaHidden="false"
+                            frameBorder="0"
+                            aria-hidden="false"
                             title="map"
                         ></iframe>
                     </div>

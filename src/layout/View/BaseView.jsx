@@ -7,7 +7,9 @@ const BaseView = (WrappedComponent) => (props) => {
     return (
         <React.Fragment>
             <Header />
-            <WrappedComponent {...props} />
+            <section className="root">
+                <WrappedComponent {...props} />
+            </section>
             <Footer />
         </React.Fragment>
     );
