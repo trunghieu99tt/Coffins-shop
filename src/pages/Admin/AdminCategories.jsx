@@ -87,8 +87,6 @@ const AdminCategories = () => {
 
     if (loading) return <Loader />;
 
-    console.log("categories", categories);
-
     const data = categories
         ?.map((category) => {
             return {
@@ -100,6 +98,9 @@ const AdminCategories = () => {
 
     return (
         <section className="adminCategory">
+            <Link to={`/quan-tri/chuyen-muc/create`} className="admin-btn">
+                Thêm mới
+            </Link>
             <Table
                 columns={columns}
                 dataSource={data}

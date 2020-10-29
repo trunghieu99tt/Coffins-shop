@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Table, message } from "antd";
+import { Switch, Table, message, Button } from "antd";
 
 import { useProductsContext } from "../../context/products.context";
 import Loader from "../../components/Loader/Loader";
@@ -131,7 +131,7 @@ const AdminProducts = () => {
             render: (value, record) => (
                 <React.Fragment>
                     <Link
-                        to={`/quan-tri/san-pham/${record.id}`}
+                        to={`/quan-tri/san-pham/${record.dbID}`}
                         className="admin-btn"
                     >
                         Sửa
@@ -150,6 +150,9 @@ const AdminProducts = () => {
     return (
         <section className="adminProducts">
             {loading && <Loader />}
+            <Link to={`/quan-tri/san-pham/create`} type="primary">
+                Add New
+            </Link>
             <Table
                 columns={columns}
                 dataSource={products}

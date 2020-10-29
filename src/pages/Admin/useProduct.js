@@ -32,7 +32,7 @@ export const useProduct = () => {
             const { dbID } = updatedValues;
             setLoading(true);
             const response = await axios.patch(
-                `products/${dbID}.json`,
+                `${prefix}/${dbID}.json`,
                 updatedValues
             );
             if (response.status === 200) {

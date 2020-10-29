@@ -35,7 +35,7 @@ const AdminProduct = () => {
 
     useEffect(() => {
         if (products) {
-            const product = products?.find((pr) => pr.id === id);
+            const product = products?.find((pr) => pr.dbID === id);
             if (product) {
                 setFormValue(product);
             } else {
@@ -71,7 +71,7 @@ const AdminProduct = () => {
         event.preventDefault();
         if (validate()) {
             if (!isEdit) {
-                handleCreate();
+                handleCreate(formValue);
             } else {
                 handleEdit(formValue);
             }
@@ -118,7 +118,7 @@ const AdminProduct = () => {
         price,
     } = formValue;
 
-    if ((!category || !category.length) && isEdit) return <Loader />;
+    if (!categories || !categories.length) return <Loader />;
     const categoriesName =
         categories?.length > 0 && categories.map((c) => c.name);
 
